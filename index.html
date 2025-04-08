@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Portfolio of Khadija Muhammad Tasiu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Khadija Muhammad Tasiu</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Reset & Base */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border: none;
+            border-radius: 10px;
+        }
+        /* Light & Dark Theme Variables */
+        
+         :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --accent-color: #942ac2;
+            /* Vibrant purple */
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --card-bg: #f9f9f9;
+            --overlay-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --accent-color: #9859b3;
+            --nav-bg: rgba(18, 18, 18, 0.9);
+            --card-bg: #1e1e1e;
+            --overlay-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        /* Header / Navbar */
+        
+        .header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--nav-bg);
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        /* Logo with Laptop Icon */
+        
+        .nav-logo i {
+            margin-right: 0.5rem;
+        }
+        /* Group theme toggle and hamburger */
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            white-space: nowrap;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-links li a {
+            font-weight: 500;
+            transition: text-shadow 0.3s;
+        }
+        /* Link focus and hover with purple shadow */
+        
+        .nav-links li a:focus,
+        .nav-links li a:hover {
+            text-shadow: 0 0 5px var(--accent-color);
+        }
+        /* Theme Toggle inside navbar */
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        /* Hamburger (Mobile) */
+        
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        /* Mobile nav active override */
+        
+        @media (max-width: 768px) {
+            .nav-links:not(.nav-active) {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+        }
+        /* Hide close button on desktop */
+        
+        @media (min-width: 768px) {
+            .close-btn {
+                display: none;
+            }
+        }
+        /* Nav-active class for mobile menu */
+        
+        .nav-active {
+            display: flex !important;
+            flex-direction: column;
+            position: fixed;
+            top: 70px;
+            /* drops below header (assumed header height ~70px) */
+            right: 0;
+            width: 70%;
+            height: calc(100% - 70px);
+            background-color: var(--nav-bg);
+            padding: 2rem;
+            transform: translateX(0);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1500;
+        }
+        /* HERO SECTION (also serves as About content) */
+        
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 6rem 2rem 2rem;
+            margin-top: 70px;
+            /* to account for fixed header */
+            position: relative;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: var(--overlay-color);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        [data-theme="dark"] .hero::before {
+            opacity: 1;
+        }
+        
+        .hero-text {
+            flex: 1 1 500px;
+        }
+        
+        .hero-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-text .highlight {
+            color: var(--accent-color);
+        }
+        
+        .hero-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .hero-buttons .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            margin-right: 1rem;
+            background-color: var(--accent-color);
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .hero-buttons .btn:hover {
+            background-color: #6c3c9a;
+        }
+        
+        .hero-image {
+            flex: 1 1 400px;
+            text-align: center;
+        }
+        /* Social Icons */
+        
+        .social-icons a {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        /* SKILLS SECTION */
+        
+        .skills-section {
+            padding: 4rem 2rem;
+            background-color: var(--card-bg);
+        }
+        
+        .skills-section h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .skills-description {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            justify-items: center;
+        }
+        
+        .skill img {
+            width: 60px;
+            height: 60px;
+        }
+        /* Overlay effect for GitHub skill icon */
+        
+        .skill.github {
+            position: relative;
+        }
+        
+        .skill.github::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay-color);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .skill.github:hover::after {
+            opacity: 1;
+        }
+        /* PROJECTS SECTION */
+        
+        .projects-section {
+            padding: 4rem 2rem;
+            background-color: var(--card-bg);
+        }
+        
+        .projects-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--bg-color);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-card img {
+            width: 100%;
+            display: block;
+        }
+        
+        .project-info {
+            padding: 1rem;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        /* CONTACT SECTION */
+        
+        .contact-section {
+            padding: 4rem 2rem;
+        }
+        
+        .contact-content {
+            max-width: 600px;
+            margin: auto;
+        }
+        
+        .contact-content h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .contact-form .btn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-form .btn:hover {
+            background-color: #6c3c9a;
+        }
+        
+        .contact-form button[type="reset"] {
+            margin-left: 1rem;
+            background-color: #777;
+        }
+        /* FOOTER */
+        
+        .footer {
+            background-color: var(--nav-bg);
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer .social-icons a {
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+        }
+        /* BACK TO TOP BUTTON */
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            z-index: 2000;
+            transition: background-color 0.3s;
+        }
+        
+        .back-to-top:hover {
+            background-color: #6c3c9a;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER / NAVBAR -->
+    <header class="header">
+        <nav class="nav container">
+            <!-- Logo with Laptop Icon and text -->
+            <div class="nav-logo">
+                <i class="fas fa-laptop"></i> Dev Dignified
+            </div>
+            <div class="nav-actions">
+                <!-- Theme Toggle (near hamburger) -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+          <i class="fas fa-moon"></i>
+        </button>
+                <!-- Hamburger Icon for Mobile -->
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            <!-- Nav Links -->
+            <ul class="nav-links" id="nav-links">
+                <!-- Close Button for Mobile (hidden on desktop) -->
+                <li class="close-btn">
+                    <a href="javascript:void(0)" id="close-btn">
+                        <i class="fas fa-times"></i>
+                    </a>
+                </li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#home">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION (serves as About content) -->
+        <section class="hero container" id="home">
+            <div class="hero-text">
+                <h1>Hi, I am <span class="highlight">Khadija Muhammad Tasiu</span></h1>
+                <p>
+                    I’m a Frontend Developer skilled in HTML, CSS, and JavaScript, focused on turning Figma designs into responsive, functional websites. I troubleshoot real-world issues like broken layouts, slow load times, or browser inconsistencies to ensure sites work
+                    smoothly across devices. I use Git/GitHub for version control and understand backend basics like PHP/MySQL. Currently learning React to build modern apps faster. I care about solving problems through clean code, making sure they work
+                    for everyone.
+                </p>
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="#" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <!-- Hero Buttons -->
+                <div class="hero-buttons">
+                    <a href="#" class="btn" download>View my CV</a>
+                    <a href="#contact" class="btn btn-secondary">Reach Me</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="image/profile.jpg" alt="Portrait of Khadija Muhammad Tasiu" />
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section class="skills-section" id="skills">
+            <div class="container">
+                <h2>My Tech Stack</h2>
+                <p class="skills-description">
+                    Technologies and tools I work with:
+                </p>
+                <div class="skills-grid">
+                    <div class="skill">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+                    </div>
+                    <div class="skill">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+                    </div>
+                    <div class="skill">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+                    </div>
+                    <div class="skill">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+                    </div>
+                    <!-- GitHub with overlay effect -->
+                    <div class="skill github">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+                    </div>
+                    <div class="skill">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" />
+                    </div>
+                </div>
+                <br>
+                <h2>Learning Skills</h2>
+                <p class="skills-description">
+                    Technologies I’m currently learning:
+                </p>
+                <div class="skills-grid">
+                    <div class="skill">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
+                    </div>
+                    <div class="skill">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" />
+                    </div>
+                    <div class="skill">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL Database" />
+                    </div>
+                    <div class="skill">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C Programming" />
+                    </div>
+                    <div class="skill">
+                        <img src="https://via.placeholder.com/60?text=Office" alt="Microsoft Office" />
+                    </div>
+                    <div class="skill">
+                        <img src="https://via.placeholder.com/60?text=Scratch" alt="Scratch Programming" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <h2>My Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="Hero.png" alt="Project One" />
+                        <div class="project-info">
+                            <h3>Project One</h3>
+                            <p>This is a brief description of Project One. It does amazing things.</p>
+                            <a href="https://example.com/project-one" target="_blank" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="Hero.png" alt="Project Two" />
+                        <div class="project-info">
+                            <h3>Project Two</h3>
+                            <p>A short summary about what this project solves or how it works.</p>
+                            <a href="https://example.com/project-two" target="_blank" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="Hero.png" alt="Project Three" />
+                        <div class="project-info">
+                            <h3>Project Three</h3>
+                            <p>Some interesting details about Project Three’s purpose and features.</p>
+                            <a href="https://example.com/project-three" target="_blank" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="Hero.png" alt="Project Four" />
+                        <div class="project-info">
+                            <h3>Project Four</h3>
+                            <p>A concise overview of Project Four. It highlights its unique aspects.</p>
+                            <a href="https://example.com/project-four" target="_blank" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact-section" id="contact">
+            <div class="container contact-content">
+                <h2>Contact</h2>
+                <form class="contact-form" action="mailto:dignifieddev@gmail.com?subject=Portfolio%20Contact%20Form" method="POST" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter Your Name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter Your Email Address" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Write Your Message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn">Send Message</button>
+                        <button type="reset" class="btn">Reset Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to Top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 by Khadija Muhammad Tasiu. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Toggle mobile nav menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.add('nav-active');
+        });
+        const closeBtn = document.getElementById('close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                navLinks.classList.remove('nav-active');
+            });
+        }
+        // Smooth scrolling for nav links
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                navLinks.classList.remove('nav-active');
+                const targetId = this.getAttribute('href').substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    window.scrollTo({
+                        top: targetEl.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        // Back to Top Button functionality
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        // Theme Toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        });
+        // Set initial theme to light mode
+        document.documentElement.setAttribute('data-theme', 'light');
+    </script>
+
+    <!--
+    Further Suggestions for Enhancing Your Portfolio:
+    1. Add subtle scroll-triggered animations (e.g., fade-in effects) to sections.
+    2. Implement lazy-loading for images to improve performance.
+    3. Enhance accessibility by using ARIA roles and more descriptive alt text.
+    4. Optimize SEO with additional meta tags and structured data.
+    5. Consider incorporating a custom favicon and touch icons.
+  -->
+</body>
+
+</html>
