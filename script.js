@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
     const mainLine = document.getElementById('typewriter-main');
     const quoteLine = document.getElementById('typewriter-quote');
 
-    const mainText = 'npm run dev  # Dignified Khadija M. Tasiu';
+    const mainText = 'npm run dev  # Dignified Khadija M.Tasiu';
     const quoteText = '// "A lady who writes code writes the future"';
 
     typeWriter(mainLine, mainText, 70, () => {
@@ -209,7 +209,5 @@ document.querySelectorAll('.iframe-preview iframe').forEach(iframe => {
         fallback.className = 'preview-fallback';
         fallback.textContent = 'Preview unavailable';
         this.parentNode.appendChild(fallback);
-}); });
-});
-}););
+    });
 });
