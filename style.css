@@ -644,22 +644,3 @@ section {
     filter: drop-shadow(0 0 20px var(--accent));
 }
 
-/* Fallback for Twitter/X icon 
-.fa-x-twitter:before {
-    content: "\e61b";  Font Awesome 6 X logo unicode 
-}*/*/
-}ottom: 1px solid var(--pink-highlight);
-    }
-    .nav-menu.active { left: 0; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2.5rem; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .skills-grid { grid-template-columns: repeat(2, 1fr); }
-    .terminal-body .line { font-size: 1.2rem; }
-}
-@media (max-width: 480px) {
-    .hero-buttons { flex-direction: column; align-items: center; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .terminal-body { padding: 15px; }
-    .comment { font-size: 1rem; }
-}
