@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khadija Muhammad Tasiu · Frontend Developer</title>
+    <!-- Google Fonts & Font Awesome 6 (icons only) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- SIMPLE VISIBLE LOADING OVERLAY -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="overlay-card">
+            <div class="overlay-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="overlay-title">~$ terminal</span>
+            </div>
+            <div class="overlay-body">
+                <div class="command-line">
+                    <span class="prompt">$</span>
+                    <span id="typewriter-main" class="command"></span>
+                    <span class="cursor" id="cursor-main">|</span>
+                </div>
+                <div class="output-line" id="typewriter-quote"></div>
+                <div class="loading-bar"><div class="loading-fill"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STICKY NAVBAR with theme toggle -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code"></i> <strong>Dev Dignified</strong>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-container fade-in">
+            <img src="profile.jpg" alt="Khadija Muhammad Tasiu" class="profile-img" onerror="this.src='https://via.placeholder.com/200x200?text=Khadija'">
+            <h1>Khadija Muhammad Tasiu</h1>
+            <p class="hero-title">Frontend Developer · UI Architect · Accessibility advocate</p>
+            <p class="hero-quote">“A lady who writes code writes the future.”</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn primary-btn">Hire Me</a>
+                <a href="#projects" class="btn outline-btn">View Projects</a>
+                <a href="khadija_m_tasiu_cv.pdf" target="_blank" class="btn outline-btn">View CV <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">Technical Skills</span></h2>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fab fa-html5"></i><h3>HTML5</h3><p>Semantic, accessible markup</p></div>
+                <div class="skill-card"><i class="fab fa-css3-alt"></i><h3>CSS3</h3><p>Flex, Grid, animations, variables</p></div>
+                <div class="skill-card"><i class="fab fa-js"></i><h3>JavaScript</h3><p>Vanilla ES6+, DOM, async</p></div>
+                <div class="skill-card"><i class="fab fa-react"></i><h3>React</h3><p>Currently mastering hooks & state</p></div>
+                <div class="skill-card"><i class="fas fa-code"></i><h3>VS Code</h3><p>Proficient with extensions, debugging, shortcuts</p></div>
+                <div class="skill-card"><i class="fab fa-tailwindcss"></i><h3>Tailwind CSS</h3><p>Utility-first framework, responsive design</p></div>
+                <div class="skill-card"><i class="fas fa-paint-brush"></i><h3>UI design</h3><p>Figma & Canva basics</p></div>
+                <div class="skill-card"><i class="fab fa-git-alt"></i><h3>Git & GitHub</h3><p>Version control, workflows</p></div>
+                <div class="skill-card"><i class="fab fa-google"></i><h3>Google Workspace</h3><p>Docs, Sheets, Slides</p></div>
+                <div class="skill-card"><i class="fas fa-file-word"></i><h3>MS Office</h3><p>Excel, Word, PowerPoint</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION (6 real repos, updated) -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">Featured Projects</span></h2>
+            <div class="projects-grid">
+                <!-- Number Base Converter -->
+                <div class="project-card">
+                    <h3>Number Base Converter</h3>
+                    <div class="iframe-preview"><iframe src="https://dignifiedmt.github.io/number_base_converter" title="Number Base Converter preview" loading="lazy"></iframe></div>
+                    <p>Convert between binary, decimal, hex instantly. Clean UI & validation.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Dignifiedmt/number_base_converter" target="_blank" class="btn small-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://dignifiedmt.github.io/number_base_converter" target="_blank" class="btn small-btn primary-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
+                </div>
+                <!-- Crypto Tracker -->
+                <div class="project-card">
+                    <h3>Crypto Tracker</h3>
+                    <div class="iframe-preview"><iframe src="https://dignifiedmt.github.io/crypto_tracker" title="Crypto Tracker preview" loading="lazy"></iframe></div>
+                    <p>Real-time crypto prices with chart & search. API integration.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Dignifiedmt/crypto_tracker" target="_blank" class="btn small-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://dignifiedmt.github.io/crypto_tracker" target="_blank" class="btn small-btn primary-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
+                </div>
+                <!-- Dignity AI (updated) -->
+                <div class="project-card">
+                    <h3>Dignity AI</h3>
+                    <div class="iframe-preview"><iframe src="https://dignifiedmt.github.io/dignity-ai" title="Dignity AI preview" loading="lazy"></iframe></div>
+                    <p>AI assistant powered by Wikipedia clean, fast, and insightful.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Dignifiedmt/dignity-ai.git" target="_blank" class="btn small-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://dignifiedmt.github.io/dignity-ai" target="_blank" class="btn small-btn primary-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
+                </div>
+                <!-- Khadija Portfolio -->
+                <div class="project-card">
+                    <h3>Khadija Portfolio</h3>
+                    <div class="iframe-preview"><iframe src="https://dignifiedmt.github.io/khadija_portfolio" title="Portfolio v1 preview" loading="lazy"></iframe></div>
+                    <p>First portfolio version minimalist and responsive.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Dignifiedmt/khadija_portfolio" target="_blank" class="btn small-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://dignifiedmt.github.io/khadija_portfolio" target="_blank" class="btn small-btn primary-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
+                </div>
+                <!-- Calculator -->
+                <div class="project-card">
+                    <h3>Calculator</h3>
+                    <div class="iframe-preview"><iframe src="https://dignifiedmt.github.io/calculator" title="Calculator preview" loading="lazy"></iframe></div>
+                    <p>Clean calculator with keyboard support & dark mode.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Dignifiedmt/calculator" target="_blank" class="btn small-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://dignifiedmt.github.io/calculator" target="_blank" class="btn small-btn primary-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
+                </div>
+                <!-- Qur'an Ayah Finder (Vercel) -->
+                <div class="project-card">
+                    <h3>Qur'an Ayah Finder</h3>
+                    <div class="iframe-preview"><iframe src="https://quran-ayah-finder.vercel.app" title="Ayah Finder preview" loading="lazy"></iframe></div>
+                    <p>Search any ayah by keyword, with translation and tafsir. (Vercel)</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Dignifiedmt/qur-an-ayah-finder" target="_blank" class="btn small-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://quran-ayah-finder.vercel.app" target="_blank" class="btn small-btn primary-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT ME SECTION (concise) -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">About Me</span></h2>
+            <div class="about-content glass-card">
+                <p>I'm Khadija, a frontend developer passionate about crafting clean, accessible interfaces. I build responsive web apps with vanilla JavaScript, CSS Grid, and Flexbox, and I love turning designs into pixel-perfect code. My projects reflect my commitment to performance and usability.</p>
+                <p>I'm constantly learning: currently diving into React and advanced UI patterns. I believe great code is both functional and elegant, and I strive to make the web a more inclusive space. Let's build something amazing together.</p>
+                <p class="signature">Khadija Muhammad Tasiu</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">Let’s connect</span></h2>
+            <div class="contact-grid">
+                <div class="contact-info glass-card">
+                    <p><i class="fas fa-envelope"></i> dignifiedmt@gmail.com</p>
+                    <p><i class="fas fa-envelope"></i> dignifieddev@gmail.com</p>
+                    <p><i class="fas fa-phone-alt"></i> +234 808 719 8579</p>
+                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/2348087198579" target="_blank">WhatsApp direct</a></p>
+                </div>
+                <form class="contact-form glass-card" action="mailto:dignifieddev@gmail.com" method="POST" enctype="text/plain" id="contactForm">
+                    <input type="text" name="name" id="name" placeholder="Your name" required>
+                    <input type="email" name="email" id="email" placeholder="Email address" required>
+                    <textarea name="message" id="message" rows="4" placeholder="Your message" required></textarea>
+                    <div class="form-feedback" id="formFeedback"></div>
+                    <button type="submit" class="btn primary-btn" id="submitBtn">Send message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/Dignifiedmt" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.facebook.com/devkhadijamtasiu" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/Dignifiedmt" target="_blank" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="x-icon">
+                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+                </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/khadija-muhammad-tasiu-407240288" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/2348087198579" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; <span id="year"></span> Khadija Muhammad Tasiu. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scrollTopBtn" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="script.js"></script>
+</body>
+</html>
