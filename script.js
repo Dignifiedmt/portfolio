@@ -1,6 +1,4 @@
-// script.js - with visible overlay, theme toggle, unicode validation
 
-// ---------- TYPEWRITER FUNCTION ----------
 function typeWriter(element, text, speed, callback) {
     let i = 0;
     element.textContent = '';
@@ -16,7 +14,7 @@ function typeWriter(element, text, speed, callback) {
     typing();
 }
 
-// ---------- LOADING OVERLAY (visible, 5 sec) ----------
+// ---------- LOADING OVERLAY (hides after typewriter completes) ----------
 window.addEventListener('load', () => {
     const overlay = document.getElementById('loading-overlay');
     const mainLine = document.getElementById('typewriter-main');
@@ -25,17 +23,28 @@ window.addEventListener('load', () => {
     const mainText = 'npm run dev  # Dignified Khadija M.Tasiu';
     const quoteText = '// "A lady who writes code writes the future"';
 
+    let typewriterDone = false;
+
+    function hideOverlay() {
+        if (!overlay) return;
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+    }
+
+    // Start the first typewriter, then the second, then hide overlay
     typeWriter(mainLine, mainText, 70, () => {
         setTimeout(() => {
-            typeWriter(quoteLine, quoteText, 50, () => {});
+            typeWriter(quoteLine, quoteText, 50, () => {
+                typewriterDone = true;
+                hideOverlay();
+            });
         }, 300);
     });
 
-    // Ensure overlay hides after 5 seconds
+    // Safety timeout: force hide after 6 seconds (in case something fails)
     setTimeout(() => {
-        overlay.style.opacity = '0';
-        overlay.style.visibility = 'hidden';
-    }, 5000);
+        if (!typewriterDone) hideOverlay();
+    }, 6000);
 });
 
 // ---------- THEME TOGGLE (sun/moon icons) ----------
