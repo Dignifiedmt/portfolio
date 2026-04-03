@@ -1,5 +1,9 @@
 
 function typeWriter(element, text, speed, callback) {
+    if (!element) {
+        if (callback) callback();
+        return;
+    }
     let i = 0;
     element.textContent = '';
     function typing() {
@@ -14,25 +18,37 @@ function typeWriter(element, text, speed, callback) {
     typing();
 }
 
-// ---------- LOADING OVERLAY (hides after typewriter completes) ----------
+// ---------- LOADING OVERLAY (fixed: always hides, typewriter always writes) ----------
 window.addEventListener('load', () => {
     const overlay = document.getElementById('loading-overlay');
     const mainLine = document.getElementById('typewriter-main');
     const quoteLine = document.getElementById('typewriter-quote');
 
+    // If critical elements are missing, hide overlay immediately
+    if (!overlay || !mainLine || !quoteLine) {
+        if (overlay) {
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+        }
+        return;
+    }
+
     const mainText = 'npm run dev  # Dignified Khadija M.Tasiu';
     const quoteText = '// "A lady who writes code writes the future"';
 
     let typewriterDone = false;
+    let overlayHidden = false;
 
     function hideOverlay() {
-        if (!overlay) return;
+        if (overlayHidden) return;
+        overlayHidden = true;
         overlay.style.opacity = '0';
         overlay.style.visibility = 'hidden';
     }
 
-    // Start the first typewriter, then the second, then hide overlay
+    // Start first typewriter
     typeWriter(mainLine, mainText, 70, () => {
+        // After first finishes, wait 300ms then start second
         setTimeout(() => {
             typeWriter(quoteLine, quoteText, 50, () => {
                 typewriterDone = true;
@@ -41,7 +57,7 @@ window.addEventListener('load', () => {
         }, 300);
     });
 
-    // Safety timeout: force hide after 6 seconds (in case something fails)
+    // Safety timeout: force hide after 6 seconds (in case typewriter hangs)
     setTimeout(() => {
         if (!typewriterDone) hideOverlay();
     }, 6000);
@@ -52,13 +68,12 @@ const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 const themeIcon = themeToggle.querySelector('i');
 
-// Check saved theme
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'light') {
     body.classList.add('light-mode');
-    themeIcon.className = 'fas fa-moon';  // moon for light mode (to switch to dark)
+    themeIcon.className = 'fas fa-moon';
 } else {
-    themeIcon.className = 'fas fa-sun';   // sun for dark mode (to switch to light)
+    themeIcon.className = 'fas fa-sun';
 }
 
 themeToggle.addEventListener('click', () => {
@@ -187,7 +202,7 @@ scrollBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// ---------- BUTTON RIPPLE ----------
+// ---------- BUTTON RIPPLE (fixed: removed problematic position:relative) ----------
 document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
         let ripple = document.createElement('span');
@@ -200,7 +215,7 @@ document.querySelectorAll('.btn').forEach(btn => {
         ripple.style.top = e.clientY - this.offsetTop + 'px';
         ripple.style.pointerEvents = 'none';
         ripple.style.transition = 'transform 0.5s, opacity 0.5s';
-        this.style.position = 'relative';
+        // Removed: this.style.position = 'relative';
         this.appendChild(ripple);
         setTimeout(() => {
             ripple.style.transform = 'scale(4)';
