@@ -1,4 +1,6 @@
+// script.js - fixed overlay typewriter + robust hiding
 
+// ---------- TYPEWRITER FUNCTION ----------
 function typeWriter(element, text, speed, callback) {
     if (!element) {
         if (callback) callback();
